@@ -24,7 +24,7 @@ function __prompt_command()
 
     PS1="${White}[${UserColor}\u${White}@${UserColor}\h${White}] - [${Blue}${NewPwd}${White}]\n"
 
-    [[ $ExitCode == 0 ]] && PS1+="${Green}$ ${None}" || PS1+="${Red}$ ${None}"
+    [[ $ExitCode == 0 ]] && PS1+="${Green}\$ ${None}" || PS1+="${Red}\$ ${None}"
 }
 
 PROMPT_COMMAND=__prompt_command
