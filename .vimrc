@@ -10,6 +10,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'python-mode/python-mode'
 call vundle#end()
 
