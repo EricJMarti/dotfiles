@@ -9,6 +9,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'python-mode/python-mode'
 call vundle#end()
 
 " Basic Settings
@@ -62,8 +64,8 @@ map <leader>s :source ~/.vimrc<cr>
 
 " Colors
 set background=dark
-colorscheme solarized
 let g:solarized_termcolors=256
+colorscheme solarized
 
 " Disable Highlighting
 map <silent> <leader><cr> :noh<cr>
@@ -78,6 +80,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Better Buffer Switching Keys
+nmap <Left> :bp<cr>
+nmap <Right> :bn<cr>
+
 " CtrlP Settings
 let g:ctrlp_map = '<c-f>'
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -91,7 +97,7 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_theme = 'tomorrow'
 
-" TMuxLine Settings
+" Tmuxline Settings
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
     \ 'left' : '',
