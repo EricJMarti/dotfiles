@@ -96,7 +96,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme = 'tomorrow'
+let g:airline_theme = 'dark_minimal'
 
 " Tmuxline Settings
 let g:tmuxline_powerline_separators = 0
