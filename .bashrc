@@ -1,7 +1,5 @@
-function __prompt_command()
+__setup_ps1()
 {
-    local ExitCode="$?"
-
     local None='\[\e[0m\]'
     local Red='\[\e[1;31m\]'
     local Green='\[\e[1;32m\]'
@@ -11,20 +9,25 @@ function __prompt_command()
     local UserColor=${Green}
     [[ $UID -eq "0" ]] && UserColor=${Red}
 
+    PS1="${White}[${UserColor}\u${White}@${UserColor}\h${White}] - [${Blue}\${__new_pwd}${White}]\n\$([[ \$? == 0 ]] && echo '${Green}' || echo '${Red}')\$ ${None}"
+}
+
+__setup_ps1
+
+__prompt_command()
+{
     local PwdMaxLength=50
     local TruncSymbol="..."
     local Dir=${PWD##*/}
     PwdMaxLength=$(( ( PwdMaxLength < ${#Dir} ) ? ${#Dir} : PwdMaxLength ))
-    NewPwd=${PWD/#$HOME/\~}
+    local NewPwd=${PWD/#$HOME/\~}
     local PwdOffset=$(( ${#NEW_PWD} - PwdMaxLength ))
     if [ ${PwdOffset} -gt "0" ]; then
         NewPwd=${NewPwd:$PwdOffset:$PwdMaxLength}
         NewPwd=${TruncSymbol}/${NewPwd#*/}
     fi
 
-    PS1="${White}[${UserColor}\u${White}@${UserColor}\h${White}] - [${Blue}${NewPwd}${White}]\n"
-
-    [[ $ExitCode == 0 ]] && PS1+="${Green}\$ ${None}" || PS1+="${Red}\$ ${None}"
+    __new_pwd=$NewPwd
 }
 
 PROMPT_COMMAND=__prompt_command
