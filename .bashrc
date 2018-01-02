@@ -9,7 +9,7 @@ __setup_ps1()
     local UserColor=${Green}
     [[ $UID -eq "0" ]] && UserColor=${Red}
 
-    PS1="${White}[${UserColor}\u${White}@${UserColor}\h${White}] - [${Blue}\${__new_pwd}${White}]\n\$([[ \$? == 0 ]] && echo '${Green}' || echo '${Red}')\$ ${None}"
+    PS1="${UserColor}\u${White}@${UserColor}\h${White} ${Blue}\${__new_pwd}\n\$([[ \$? == 0 ]] && echo '${Green}' || echo '${Red}')\$ ${None}"
 }
 
 __setup_ps1
