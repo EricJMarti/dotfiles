@@ -12,6 +12,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'python-mode/python-mode'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()
 
 " Basic Settings
