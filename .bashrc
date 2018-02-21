@@ -1,3 +1,5 @@
+#!/bin/bash
+
 __setup_ps1()
 {
     local None='\[\e[0m\]'
@@ -33,3 +35,4 @@ __prompt_command()
 PROMPT_COMMAND=__prompt_command
 
 [[ -s ~/.bash_aliases ]] && source ~/.bash_aliases
+[[ -s ~/.bash_extras ]] && source ~/.bash_extras
