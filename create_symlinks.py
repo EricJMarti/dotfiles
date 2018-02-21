@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 
+
 import os
 import subprocess
 
+
 dotfile_dir = os.path.dirname(os.path.realpath(__file__))
+
+excluded_dotfiles = ['.gitignore']
 
 dotfiles = [f for f in os.listdir(dotfile_dir)
             if os.path.isfile(os.path.join(dotfile_dir, f))
+            and f not in excluded_dotfiles
             and f.startswith('.')]
 
 for f in dotfiles:
