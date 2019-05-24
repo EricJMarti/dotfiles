@@ -6,7 +6,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'junegunn/fzf.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -37,7 +36,6 @@ set number
 set ignorecase
 set smartcase
 set timeout timeoutlen=200 ttimeoutlen=100
-set visualbell
 set noerrorbells
 set autowrite
 set showcmd
@@ -87,24 +85,39 @@ map <C-l> <C-W>l
 nmap <Left> :bp<cr>
 nmap <Right> :bn<cr>
 
-" CtrlP Settings
-let g:ctrlp_map = '<c-f>'
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
 " Airline Settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_theme = 'dark_minimal'
 
+" FZF Settings
+map <C-f> :FZF<cr>
+let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-x': 'split',
+    \ 'ctrl-v': 'vsplit' }
+let g:fzf_colors = {
+    \ 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Comment'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
+let g:fzf_layout = { 'down': '~40%' }
+
 " Tmuxline Settings
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '>',
-    \ 'right' : '',
-    \ 'right_alt' : '<',
-    \ 'space' : ' '}
+    \ 'left':      '',
+    \ 'left_alt':  '>',
+    \ 'right':     '',
+    \ 'right_alt': '<',
+    \ 'space':     ' ' }
