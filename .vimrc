@@ -1,9 +1,11 @@
 " Plugins
 set nocompatible
 filetype off
+set rtp+=~/.fzf
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'junegunn/fzf.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
