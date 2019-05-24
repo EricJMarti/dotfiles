@@ -12,9 +12,16 @@ __setup_ps1()
     [[ $UID -eq "0" ]] && UserColor=${Red}
 
     PS1="${UserColor}\u${White}@${UserColor}\h${White} ${Blue}\${__new_pwd}\n\$([[ \$? == 0 ]] && echo '${Green}' || echo '${Red}')\$ ${None}"
-}
 
-__setup_ps1
+    # If this is an xterm set the title to user@host:dir
+    case "$TERM" in
+        xterm*|rxvt*)
+            PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+            ;;
+        *)
+            ;;
+    esac
+}
 
 __prompt_command()
 {
@@ -32,7 +39,20 @@ __prompt_command()
     __new_pwd=$NewPwd
 }
 
-PROMPT_COMMAND=__prompt_command
+__source_dotfiles()
+{
+    local dotfiles=(
+        ~/.fzf.bash
+        ~/.bash_aliases_shared
+        ~/.bash_extras_shared
+        ~/.bash_aliases
+        ~/.bash_extras
+    )
+    for f in "${dotfiles[@]}"; do
+        [[ -s $f ]] && source $f
+    done
+}
 
-[[ -s ~/.bash_aliases ]] && source ~/.bash_aliases
-[[ -s ~/.bash_extras ]] && source ~/.bash_extras
+PROMPT_COMMAND=__prompt_command
+__setup_ps1
+__source_dotfiles
